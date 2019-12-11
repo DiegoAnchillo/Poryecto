@@ -16,5 +16,5 @@ public interface FoodService{
 
     public List<Food>findAll();
     
-    public Food findById(int id);
+    public Food findById(int idfood);
 }

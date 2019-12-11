@@ -29,13 +29,12 @@ public class FoodServiceImp implements FoodService {
     }
 
     @Override
-    public Food findById(int id) {
-        return foodRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+    public Food findById(int idfood) {
+        return foodRepository.findById(idfood).orElseThrow(() -> new EntityNotFoundException());
     }
 
     @Override
     public boolean isFoodAlreadyPresent(Food food) {
-        
         return false;
     }
 

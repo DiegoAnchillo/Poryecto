@@ -42,25 +42,24 @@
 		<div class="container py-xl-5 py-3">
 			<div class="login-body">
 				<div class="login p-4 mx-auto">
-					<h5 class="text-center mb-4">Registrar Comida</h5>
-					<form action="#" method="post" th:action="@{/registerfood}" th:object="${food}" enctype="multipart/form-data">
+					<h5 class="text-center mb-4">Registrar Bebida</h5>
+					<form action="#" method="post" th:action="@{/registerdrink}" th:object="${drink}" enctype="multipart/form-data">
 						<div class="form-group">
 							<label>Nombre</label>
-							<input type="text" th:field="*{namefood}" placeholder="" class="form-control" />
+							<input type="text" th:field="*{namedrink}" placeholder="" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label>Costo</label>
-							<input type="text" th:field="*{costfood}" placeholder="" class="form-control" />
+							<label>Tamaño</label>
+							<input type="text" th:field="*{size}" placeholder="" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label class="mb-2">Descripcion</label>
-							<input type="text" th:field="*{descripcion}" placeholder="" class="form-control" />
+							<label class="mb-2">Costo</label>
+							<input type="text" th:field="*{costdrink}" placeholder="" class="form-control" />
 						</div>
 						<div class="form-group">
 								<label class="mb-2">Imagen</label>
-
-								<input type="file" name="foodFile" placeholder="" class="form-control" />
-						</div>
+								<input type="file"  name ="drinkFile" placeholder="" class="form-control" />
+							</div>
 						<div class="form-group">
 								<div class="">
 									<button type="submit" class="btn btn-primary btn-block">Registrar</button>

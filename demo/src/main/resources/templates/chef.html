@@ -20,16 +20,20 @@
                 </thead>
                 <tbody>
                     <tr th:each="food: ${foodList}">
-                        <td th:text="${food.Id}"></td>
-                        <td th:text="${food.Name}"></td>
-                        <td th:text="${food.Cost}"></td>
+                        <td th:text="${food.Idfood}"></td>
+                        <td th:text="${food.Namefood}"></td>
+                        <td th:text="${food.Costfood}"></td>
                         <td th:text="${food.Descripcion}"></td>
                     </tr>
                 </tbody>
                 
             </table>
-            <a href="index" class="btn btn-danger">Cerra Sesión</a>
-            <a href="pedidos" class="btn btn-danger">Mostrar pedidos</a>
+            <form class="btn login-button-2 text-uppercase text-wh" form-method="post" th:action="@{/logout}">
+                <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
+            <div class="btn login-button-2 text-wh">
+                    <a href="pedidos" class="btn btn-success">Mostrar Pedidos</a>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

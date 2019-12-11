@@ -34,19 +34,21 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 	protected String determineTargetUrl(Authentication authentication) {
 		String url = "/login?error=true";
 
-		// Fetch the roles from Authentication object
+		// Ferifica el rol que tiene el usuario
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		List<String> roles = new ArrayList<String>();
 		for (GrantedAuthority a : authorities) {
 			roles.add(a.getAuthority());
 		}
 
-		// check user role and decide the redirect URL
+		// Re-direcciona segun el rol
 		if (roles.contains("ADMIN_USER")) {
 			url = "/admin";
 		} 
 		else if (roles.contains("SITE_USER")) {
 			url = "/index";
+		}else if(roles.contains("SUPER_USER")){
+			url = "/chef";
 		}
 		return url;
 	}

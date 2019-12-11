@@ -8,13 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+
 @Entity
 @Table(name="food_table")
 public class Food{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="food_id")
-    private int id;
+    private int idfood;
 
     @NotNull(message="Food name is compulsory")
     @Column(name = "food_name")
@@ -22,18 +23,22 @@ public class Food{
 
     @NotNull(message = "Food cost is compulsory")
     @Column(name="food_cost")
-    private String cost;
+    private String costfood;
 
     @NotNull(message = "Food descripcion is compulsory")
     @Column(name="food_descripcion")
     private String descripcion;
 
-    public int getId() {
-        return id;
+    //@NotNull(message = "Food image is compulsory")
+    //@Column(name="food_image")
+    //private String imagefood;
+
+    public int getIdfood() {
+        return idfood;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdfood(int idfood) {
+        this.idfood = idfood;
     }
 
     public String getNamefood() {
@@ -44,12 +49,12 @@ public class Food{
         this.namefood = namefood;
     }
 
-    public String getCost() {
-        return cost;
+    public String getCostfood() {
+        return costfood;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
+    public void setCostfood(String costfood) {
+        this.costfood = costfood;
     }
 
     public String getDescripcion() {
@@ -60,8 +65,14 @@ public class Food{
         this.descripcion = descripcion;
     }
 
+    //public String getImagefood() {
+    //    return imagefood;
+    //}
+
+    //public void setImagefood(String imagefood) {
+    //    this.imagefood = imagefood;
+    //}
+
     
-
-
     
 }

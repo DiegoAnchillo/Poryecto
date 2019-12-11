@@ -49,12 +49,12 @@
 						<div class="row">
 							<div class="col-xl-3 col-6 header-top_w3layouts">
 								<p class="text-da">
-									<span class="fa fa-map-marker mr-2"></span>Parma Via, Italy
+									<span class="fa fa-map-marker mr-2"></span>San Miguel, Lima
 								</p>
 							</div>
 							<div class="col-xl-3 col-6 header-top_w3layouts">
 								<p class="text-da">
-									<span class="fa fa-phone mr-2"></span>+1 000263676
+									<span class="fa fa-phone mr-2"></span>+51 954263688
 								</p>
 							</div>
 							<div class="col-xl-6"></div>
@@ -63,10 +63,9 @@
 					<div class="col-xl-5 col-md-7 top-social-agile text-md-right text-center pr-sm-0 mt-md-0 mt-2">
 						<div class="row middle-flex">
 							<div class="col-lg-5 col-4 top-w3layouts p-md-0 text-right">
-								<!-- login -->
-								<a href="login" class="btn login-button-2 text-uppercase text-wh">
-									<span class="fa fa-sign-in mr-2"></span>Login</a>
-								<!-- //login -->
+								<form class="btn login-button-2 text-uppercase text-wh" form-method="post" th:action="@{/logout}">
+									<button class="btn btn-danger" type="submit">Logout</button>
+								</form>
 							</div>
 							<div class="col-lg-7 col-8 social-grid-w3">
 								<!-- social icons -->
@@ -143,12 +142,7 @@
 							</li>
 							<li><a href="menu">Menu</a></li>
 							<li><a href="contact">Contact Us</a></li>
-							<li>
-								<!-- login -->
-								<a href="https://w3layouts.com/" target="_blank" class="dwn-button ml-lg-5">
-									<span class="fa fa-cloud-download mt-lg-0 mt-4" aria-hidden="true"></span>
-								</a>
-								<!-- //login -->
+							
 							</li>
 						</ul>
 					</nav>
@@ -181,263 +175,75 @@
 		<div class="container py-xl-5 py-lg-3">
 			<div class="title-section text-center mb-md-5 mb-4">
 				<h3 class="w3ls-title mb-3">Our <span>Menu</span></h3>
-				<p class="titile-para-text mx-auto">Inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicabo.Nemo
-					enim totam rem aperiam.</p>
+				<p class="titile-para-text mx-auto">El menu del dia.</p>
 			</div>
 			<!--para llamar a los platos de la base de datos  th:each="food:${foodList}"-->
-			<div class="row mt-4" >
-				<div class="col-md-4">
+			<div class="row justify-content-center mt-md-5" th:each="food:${foodList}">
+				<div class="col-md-5">
 					<div class="gallery-demo">
 						<a href="#gal1">
-							<img src="images/blog1.jpg" alt="" class="img-fluid" />
+							<img src="images/images.jpg" alt="" class="img-fluid" />
 							<!--Corregir para mostrar el costo y nombre de la base de datos-->
-							<h4 class="p-mask">French Burger - <span>$22</span></h4>
+							<h4 class="p-mask" ><span th:text="${food.Namefood}"></span> </h4>
 						</a>
 					</div>
 				</div>
-				<div class="col-md-4 mt-md-0 mt-4">
-					<div class="gallery-demo">
-						<a href="#gal2">
-							<img src="images/blog2.jpg" alt="" class="img-fluid" />
-							<h4 class="p-mask">Veg Muffin - <span>$16</span></h4>
+				<div id="gal1" class="pop-overlay">
+					<div class="popup">
+						<img class="img-fluid" src="images/images.jpg" alt="">
+						<h4 class="p-mask" ><span th:text="${food.Costfood}"></span></h4>
+
+						<a href="#gal1.5" class="button-w3ls active mt-3">Ordenar Ahora
+							<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
 						</a>
+						<a class="close" href="#gallery">×</a>
 					</div>
 				</div>
-				<div class="col-md-4 mt-md-0 mt-4">
-					<div class="gallery-demo">
-						<a href="#gal3">
-							<img src="images/blog3.jpg" alt=" " class="img-fluid" />
-							<h4 class="p-mask">Brioche - <span>$18</span></h4>
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-md-5">
-				<div class="col-md-4 mt-md-0 mt-4">
-					<div class="gallery-demo">
-						<a href="#gal4">
-							<img src="images/g1.jpg" alt=" " class="img-fluid" />
-							<h4 class="p-mask">Cheese Burger - <span>$20</span></h4>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-4 mt-md-0 mt-4">
-					<div class="gallery-demo">
-						<a href="#gal5">
-							<img src="images/g2.jpg" alt=" " class="img-fluid" />
-							<h4 class="p-mask">Chicken Burger - <span>$22</span></h4>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-4 mt-md-0 mt-4">
-					<div class="gallery-demo">
-						<a href="#gal6">
-							<img src="images/g3.jpg" alt=" " class="img-fluid" />
-							<h4 class="p-mask">Veg Burger - <span>$16</span></h4>
-						</a>
+			
+				<div id="gal1.5" class="pop-overlay">
+					<div class="popup">
+						<img class="img-fluid" src="images/images.jpg" alt="">
+						<form action="#" method="post" th:action="@{/pedidos}" th:object="${mesa}">
+							<div class="form-group">
+								<label>Escriba el numero de su mesa</label>
+								<input type="text"  placeholder="" class="form-control" />
+							</div>
+							<div class="form-group">
+								<div class="">
+									<button type="submit" class="btn btn-success mt-3">Pagar en Caja
+										<span class="fa fa-caret-right ml-1" aria-hidden="true"></span></button>
+									</div>
+								</div>
+						<a class="close" href="#gallery">×</a>
+						<span th:utext="${successMessage}"></span>
+							<div class="alert alert-success alert-dismissible col-sm-12"
+								th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+								<button type="button" class="close" data-dismiss="alert"
+									aria-hidden="true">×</button>
+								<ul th:each="data : ${bindingResult.getAllErrors()}">
+									<li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+								</ul>
+							</div>
+						</form>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="button-w3ls active mt-3">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="FHBYAUESNKQ9N">
+							<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
+							<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 	</section>
 
 	<!-- gallery model-->
 	<!-- gallery popup 1 -->
-	<div id="gal1" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/blog1.jpg" alt="">
-			<h4 class="p-mask">French Burger - <span>$22</span></h4>
+	
 
-			<a href="#gal1.5" class="button-w3ls active mt-3">Ordenar Ahora
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-		</div>
-	</div>
-
-	<div id="gal1.5" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/blog1.jpg" alt="">
-			<h4 class="p-mask">French Burger - <span>$22</span></h4>
-
-			<p>Escriba el numero de su mesa</p>
-			<input class="form-control" type="number" data-tabindex="1" id="plato1">
-			<a href="#Boleta" class="button-w3ls active mt-3">Pagar al contado
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-			
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="button-w3ls active mt-3">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="FHBYAUESNKQ9N">
-				<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-	</div>
-
-	<!-- //gallery popup 1 -->
-	<!-- gallery popup 2 -->
-	<div id="gal2" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/blog2.jpg" alt="">
-			<h4 class="p-mask">Veg Muffin - <span>$16</span></h4>
-
-			<a href="#gal2.5" class="button-w3ls active mt-3">Ordenar Ahora
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-		</div>
-	</div>
-	<div id="gal2.5" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/blog2.jpg" alt="">
-			<h4 class="p-mask">Veg Muffin - <span>$16</span></h4>
-			
-			<p>Escriba el numero de su mesa</p>
-			<input class="form-control" type="number" data-tabindex="1">
-			<a href="#boleta" class="button-w3ls active mt-3">Pagar al contado
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="button-w3ls active mt-3">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="FHBYAUESNKQ9N">
-				<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-	</div>
-	<!-- //gallery popup 2 -->
-	<!-- gallery popup 3 -->
-	<div id="gal3" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/blog3.jpg" alt="">
-			<h4 class="p-mask">Brioche - <span>$18</span></h4>
-
-			<a href="#gal3.5" class="button-w3ls active mt-3">Ordenar Ahora
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-		</div>
-	</div>
-	<div id="gal3.5" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/blog3.jpg" alt="">
-			<h4 class="p-mask">Brioche - <span>$18</span></h4>
-
-			<p>Escriba el numero de su mesa</p>
-			<input class="form-control" type="number" data-tabindex="1">
-			<a href="#Boleta" class="button-w3ls active mt-3">Pagar al contado
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="button-w3ls active mt-3">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="3DTVCFYA3C4WL">
-				<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-	</div>
-	<!-- //gallery popup 3 -->
-	<!-- gallery popup 4 -->
-	<div id="gal4" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/g1.jpg" alt="">
-			<h4 class="p-mask">Cheese Burger - <span>$20</span></h4>
-
-			<p>Escriba el numero de su mesa</p>
-			<input class="form-control" type="number" data-tabindex="1">
-			<a href="#gal4.5" class="button-w3ls active mt-3">Ordenar Ahora
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-		</div>
-	</div>
-	<div id="gal4.5" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/g1.jpg" alt="">
-			<h4 class="p-mask">Cheese Burger - <span>$20</span></h4>
-
-			<p>Escriba el numero de su mesa</p>
-			<input class="form-control" type="number" data-tabindex="1">
-			<a href="#Boleta" class="button-w3ls active mt-3">Pagar al contado
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="button-w3ls active mt-3">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="3DTVCFYA3C4WL">
-				<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-	</div>
-	<!-- //gallery popup 4 -->
-	<!-- gallery popup 5 -->
-	<div id="gal5" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/g2.jpg" alt="">
-			<h4 class="p-mask">Chicken Burger - <span>$22</span></h4>
-			<a href="#gal5.5" class="button-w3ls active mt-3">Ordenar Ahora
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-		</div>
-	</div>
-	<div id="gal5.5" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/g2.jpg" alt="">
-			<h4 class="p-mask">Chicken Burger - <span>$22</span></h4>
-
-			<p>Escriba el numero de su mesa</p>
-			<input class="form-control" type="number" data-tabindex="1">
-			<a href="#Boleta" class="button-w3ls active mt-3">Pagar al contado
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="button-w3ls active mt-3">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="3DTVCFYA3C4WL">
-				<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-	</div>
-	<!-- //gallery popup 5 -->
-	<!-- gallery popup 6 -->
-	<div id="gal6" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/g3.jpg" alt="">
-			<h4 class="p-mask">Veg Burger - <span>$16</span></h4>
-			<a href="#gal6.5" class="button-w3ls active mt-3">Ordenar Ahora
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-		</div>
-	</div>
-	<div id="gal6.5" class="pop-overlay">
-		<div class="popup">
-			<img class="img-fluid" src="images/g3.jpg" alt="">
-			<h4 class="p-mask">Veg Burger - <span>$16</span></h4>
-
-			<p>Escriba el numero de su mesa</p>
-			<input class="form-control" type="number" data-tabindex="1">
-			<a href="#Boleta" class="button-w3ls active mt-3">Pagar al contado
-				<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-			</a>
-			<a class="close" href="#gallery">×</a>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="button-w3ls active mt-3">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="3DTVCFYA3C4WL">
-				<input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-	</div>
-	<!-- //gallery popup 6 -->
+	
+	<!-- gallery popup 1 -->
 	<!-- //menu -->
 
 	<!-- footer -->
@@ -544,8 +350,7 @@
 	<!-- //footer -->
 	<!-- copyright -->
 	<div class="cpy-right text-center py-3">
-		<p>© 2019 Tasty Burger. All rights reserved | Design by
-			<a href="http://w3layouts.com"> W3layouts.</a>
+		<p>© 2019 Tasty Burger. All rights reserved
 		</p>
 	</div>
 	<!-- //copyright -->

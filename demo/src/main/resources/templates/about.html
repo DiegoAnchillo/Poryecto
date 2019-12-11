@@ -1,15 +1,8 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>Tasty Burger Restaurants Category Bootstrap Responsive Web Template | About Us :: W3layouts</title>
+	<title>Tasty Burger Restaurants</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -70,10 +63,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-xl-5 col-md-7 top-social-agile text-md-right text-center pr-sm-0 mt-md-0 mt-2">
 						<div class="row middle-flex">
 							<div class="col-lg-5 col-4 top-w3layouts p-md-0 text-right">
-								<!-- login -->
-								<a href="login" class="btn login-button-2 text-uppercase text-wh">
-									<span class="fa fa-sign-in mr-2"></span>Login</a>
-								<!-- //login -->
+								<form class="btn login-button-2 text-uppercase text-wh" form-method="post" th:action="@{/logout}">
+									<button class="btn btn-danger" type="submit">Logout</button>
+								</form>
 							</div>
 							<div class="col-lg-7 col-8 social-grid-w3">
 								<!-- social icons -->
@@ -150,13 +142,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 							<li><a href="menu">Menu</a></li>
 							<li><a href="contact">Contact Us</a></li>
-							<li>
-								<!-- login -->
-								<a href="https://w3layouts.com/" target="_blank" class="dwn-button ml-lg-5">
-									<span class="fa fa-cloud-download mt-lg-0 mt-4" aria-hidden="true"></span>
-								</a>
-								<!-- //login -->
-							</li>
 						</ul>
 					</nav>
 				</div>
@@ -497,8 +482,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //footer -->
 	<!-- copyright -->
 	<div class="cpy-right text-center py-3">
-		<p>© 2019 Tasty Burger. All rights reserved | Design by
-			<a href="http://w3layouts.com"> W3layouts.</a>
+		<p>© 2019 Tasty Burger. All rights reserved
 		</p>
 	</div>
 	<!-- //copyright -->
